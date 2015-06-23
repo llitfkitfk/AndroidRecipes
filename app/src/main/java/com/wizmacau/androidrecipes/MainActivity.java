@@ -1,5 +1,6 @@
 package com.wizmacau.androidrecipes;
 
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.design.widget.NavigationView;
@@ -10,11 +11,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.wizmacau.androidrecipes.core.App;
 import com.wizmacau.androidrecipes.model.Article;
 import com.wizmacau.androidrecipes.model.Articles;
+
+import javax.inject.Inject;
 
 /**
  * Created by llitfkitfk on 6/19/15.
@@ -29,9 +34,15 @@ public class MainActivity extends AppCompatActivity implements ArticlesConsumer 
 
     private Articles articles;
 
+    @Inject
+    LocationManager locationManager;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((App) getApplication()).component().inject(this);
+        Log.d("MainActivity", locationManager.toString());
+
         setContentView(R.layout.activity_main);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

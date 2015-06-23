@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Design Library</string>
+    <string name="app_name">App Recipes</string>
 
     <string name="styling_android">Styling Android</string>
     <string name="feed_url">http://blog.stylingandroid.com/feed/</string>
